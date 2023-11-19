@@ -1,0 +1,14 @@
+name: form_inputs
+description: A Dart package which exposes reusable form inputs and validation rules
+publish_to: none
+
+environment:
+  sdk: ">=3.1.2 <3.10.0"
+
+dependencies:
+  formz: ^0.6.0 
+  fzregex: ^2.0.0
+  
+dev_dependencies:
+  test: ^1.21.4
+  very_good_analysis: ^4.0.0

@@ -1,0 +1,28 @@
+name: data_access
+description: data_access Component Library
+publish_to: none
+
+environment:
+  sdk: '>=3.1.2 <4.0.0'
+
+dependencies:
+  application:
+    path: ../application
+  logger:
+    path: ../logger
+  clock: ^1.1.1
+  data_connection_checker_nulls: ^0.0.2
+  domain:
+    path: ../domain
+  flutter:
+    sdk: flutter
+  test: ^1.24.1
+
+dev_dependencies:
+  build_runner: ^2.3.3
+  flutter_test:
+    sdk: flutter
+  mockito: ^5.4.2
+  very_good_analysis: ^4.0.0+1
+
+flutter: null

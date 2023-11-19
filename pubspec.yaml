@@ -1,0 +1,41 @@
+name: application_template
+description: A new Flutter project.
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=3.1.5 <4.0.0'
+
+dependencies:
+  app_ui:
+    path: packages/app_ui
+  application:
+    path: packages/application
+  bloc: ^8.1.2
+  build_runner: ^2.4.6
+  dev: ^1.0.0
+  domain:
+    path: packages/domain
+  equatable: ^2.0.5
+  flow_builder: ^0.0.9
+  flutter:
+    sdk: flutter
+  flutter_bloc: ^8.1.3
+  flutter_localization: ^0.1.14
+  form_inputs:
+    path: packages/form_inputs
+  get_it: ^7.6.4
+  intl: any
+  logger:
+    path: packages/logger
+  provider: ^6.1.1
+
+dev_dependencies:
+
+  flutter_lints: ^2.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  generate: true
+  uses-material-design: true

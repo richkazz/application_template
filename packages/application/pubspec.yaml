@@ -1,0 +1,25 @@
+name: application
+description: application Component Library
+publish_to: none
+
+environment:
+  sdk: '>=3.1.2 <4.10.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  domain:
+      path: ../domain
+  data_access:
+      path: ../data_access
+  get_it: ^7.6.0
+  data_connection_checker_nulls: ^0.0.2
+    
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+  mockingjay: ^0.3.0
+  mocktail: ^0.3.0
+
+flutter:

@@ -1,0 +1,8 @@
+{
+  "appName": "App Template",
+  "@appName": {
+    "description": "The name of this application",
+    "type": "text",
+    "placeholders": {}
+  }
+}
