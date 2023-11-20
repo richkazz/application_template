@@ -3,30 +3,30 @@ import 'package:domain/domain.dart';
 abstract class AuthenticationHelperInterface {
   bool get isUserSignedIn;
   String get userId;
-  Stream<User> authStateChanges();
+  Stream<Result<User>> authStateChanges();
 
   Stream<User> get userStream;
 
   bool isEmailVerified();
 
-  User? getUser();
+  Result<User>? getUser();
 
   //SIGN UP METHOD
   ///Signup model and String displayName
-  Future<User> signUp((SignUp signUp, String displayName) parm);
+  Future<Result<User>> signUp((SignUp signUp, String displayName) parm);
 
-  Future<void> sendVerificationMail();
+  Future<Result<User>> sendVerificationMail();
 
-  Future<User> signIn(Login login);
+  Future<Result<User>> signIn(Login login);
 
-  Future<User> verifySignInPassword(String password);
+  Future<Result<User>> verifySignInPassword(String password);
 
   //SIGN OUT METHOD
-  Future<void> changePassword(String password);
-  Future<void> forgetPassword(String email);
-  Future<void> updateEmail(String email);
+  Future<Result<User>> changePassword(String password);
+  Future<Result<User>> forgetPassword(String email);
+  Future<Result<User>> updateEmail(String email);
 
-  Future<void> updateDisplayName(String displayName);
+  Future<Result<User>> updateDisplayName(String displayName);
 
-  Future<void> signOut();
+  Future<Result<User>> signOut();
 }

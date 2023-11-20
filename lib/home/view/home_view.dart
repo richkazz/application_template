@@ -1,6 +1,6 @@
-import 'package:app_ui/app_ui.dart';
 import 'package:application_template/app/app.dart';
 import 'package:application_template/home/home.dart';
+import 'package:application_template/login/login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -35,13 +35,7 @@ class HomeView extends StatelessWidget {
       child: Scaffold(
         body: IndexedStack(
           index: selectedTab,
-          children: const [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [Text('Hi')],
-            )
-          ],
+          children: const [Login()],
         ),
       ),
     );

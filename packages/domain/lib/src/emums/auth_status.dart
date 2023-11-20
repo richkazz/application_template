@@ -42,7 +42,6 @@ enum AuthStatus {
 
 class AuthExceptionHandler {
   static AuthStatus errorCodeToAuthStatusEnum(String code) {
-    AuthStatus status;
     switch (code) {
       case 'network-request-failed':
         return AuthStatus.networkError;

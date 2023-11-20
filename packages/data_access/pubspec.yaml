@@ -8,14 +8,15 @@ environment:
 dependencies:
   application:
     path: ../application
-  logger:
-    path: ../logger
   clock: ^1.1.1
   data_connection_checker_nulls: ^0.0.2
+  dio: ^5.3.3
   domain:
     path: ../domain
   flutter:
     sdk: flutter
+  logger:
+    path: ../logger
   test: ^1.24.1
 
 dev_dependencies:

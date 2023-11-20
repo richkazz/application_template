@@ -6,26 +6,37 @@ import 'package:logger/logger.dart';
 class AuthenticationHelperFirebaseService
     with LoggerMixin<AuthenticationHelperFirebaseService>
     implements AuthenticationHelperInterface {
+  AuthenticationHelperFirebaseService(this._resultService);
+  final ResultService _resultService;
+
   @override
-  Stream<User> authStateChanges() {
+  // TODO: implement userId
+  String get userId => throw UnimplementedError();
+
+  @override
+  // TODO: implement userStream
+  Stream<User> get userStream => const Stream.empty();
+
+  @override
+  Stream<Result<User>> authStateChanges() {
     // TODO: implement authStateChanges
     throw UnimplementedError();
   }
 
   @override
-  Future<void> changePassword(String password) {
+  Future<Result<User>> changePassword(String password) {
     // TODO: implement changePassword
     throw UnimplementedError();
   }
 
   @override
-  Future<void> forgetPassword(String email) {
+  Future<Result<User>> forgetPassword(String email) {
     // TODO: implement forgetPassword
     throw UnimplementedError();
   }
 
   @override
-  User? getUser() {
+  Result<User>? getUser() {
     // TODO: implement getUser
     throw UnimplementedError();
   }
@@ -41,51 +52,43 @@ class AuthenticationHelperFirebaseService
   bool get isUserSignedIn => throw UnimplementedError();
 
   @override
-  Future<void> sendVerificationMail() {
+  Future<Result<User>> sendVerificationMail() {
     // TODO: implement sendVerificationMail
     throw UnimplementedError();
   }
 
   @override
-  Future<User> signIn(Login login) {
+  Future<Result<User>> signIn(Login login) {
     // TODO: implement signIn
     throw UnimplementedError();
   }
 
   @override
-  Future<void> signOut() {
+  Future<Result<User>> signOut() {
     // TODO: implement signOut
     throw UnimplementedError();
   }
 
   @override
-  Future<User> signUp((SignUp, String) parm) {
+  Future<Result<User>> signUp((SignUp, String) parm) {
     // TODO: implement signUp
     throw UnimplementedError();
   }
 
   @override
-  Future<void> updateDisplayName(String displayName) {
+  Future<Result<User>> updateDisplayName(String displayName) {
     // TODO: implement updateDisplayName
     throw UnimplementedError();
   }
 
   @override
-  Future<void> updateEmail(String email) {
+  Future<Result<User>> updateEmail(String email) {
     // TODO: implement updateEmail
     throw UnimplementedError();
   }
 
   @override
-  // TODO: implement userId
-  String get userId => throw UnimplementedError();
-
-  @override
-  // TODO: implement userStream
-  Stream<User> get userStream => const Stream.empty();
-
-  @override
-  Future<User> verifySignInPassword(String password) {
+  Future<Result<User>> verifySignInPassword(String password) {
     // TODO: implement verifySignInPassword
     throw UnimplementedError();
   }
