@@ -4,6 +4,10 @@ import 'package:app_ui/app_ui.dart';
 import 'package:flutter/widgets.dart';
 import 'package:logger/logger.dart';
 
+abstract class FormController {
+  void dispose();
+}
+
 class FormControl<FormName extends Enum>
     with LoggerMixin<FormControl<FormName>> {
   /// Number of form fields available in the form
@@ -34,11 +38,11 @@ class FormControl<FormName extends Enum>
   /// Gets the content of a form field with the specified content type.
   ContentType getContent<ContentType>(FormName formName) {
     final content = _fieldsContent[formName];
-    if (content != ContentType) {
+    if (content is! ContentType) {
       logError('Invalid content type');
       throw Exception('Invalid content type');
     }
-    return content as ContentType;
+    return content;
   }
 
   /// Validates a form field.

@@ -98,7 +98,7 @@ class AppTextField extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         ConstrainedBox(
-          constraints: const BoxConstraints(minHeight: 80),
+          constraints: const BoxConstraints(minHeight: 50),
           child: TextFormField(
             key: key,
             initialValue: initialValue,
@@ -119,6 +119,14 @@ class AppTextField extends StatelessWidget {
               hintText: hintText,
               prefixIcon: prefix,
               suffixIcon: suffix,
+              error: errorText == null
+                  ? null
+                  : Text(
+                      errorText!,
+                      softWrap: true,
+                      style:
+                          const TextStyle(color: AppColors.red, fontSize: 13),
+                    ),
               suffixIconConstraints: const BoxConstraints.tightFor(
                 width: 32,
                 height: 32,
@@ -280,7 +288,14 @@ class AppTextFieldOutlined extends StatelessWidget {
                         ? const Color.fromRGBO(252, 252, 253, 1)
                         : AppColors.black,
                   ),
-              errorText: errorText,
+              error: errorText == null
+                  ? null
+                  : Text(
+                      errorText!,
+                      softWrap: true,
+                      style:
+                          const TextStyle(color: AppColors.red, fontSize: 13),
+                    ),
               prefixIcon: prefix,
               suffixIcon: suffix,
               filled: true,

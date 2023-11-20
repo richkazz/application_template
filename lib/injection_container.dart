@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:application_template/app/app.dart';
-import 'package:application_template/login/cubit/login_cubit.dart';
+import 'package:application_template/login/controller/login_controller.dart';
 import 'package:get_it/get_it.dart';
 
 import 'package:domain/domain.dart';

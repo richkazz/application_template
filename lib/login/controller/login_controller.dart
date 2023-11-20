@@ -1,63 +1,57 @@
-import 'package:app_ui/app_ui.dart';
 import 'package:application/application.dart';
 import 'package:domain/domain.dart';
 import 'package:application_template/util/util.dart';
-import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
 import 'package:flutter/widgets.dart';
+import 'package:form_inputs/form_inputs.dart';
 
-part 'login_state.dart';
-
-class LoginCubit extends Cubit<LoginState> {
-  LoginCubit() : super(LoginState());
-
-  @override
-  Future<void> close() {
-    return super.close();
-  }
+enum LoginFormField {
+  emailOrUserName,
+  password;
 }
 
-abstract class FormController {
-  void dispose();
-}
-
-class LoginFormController implements FormController {
+class LoginFormController with ChangeNotifier implements FormController {
   final AuthenticationHelperInterface _auth;
-  late ValueNotifier<(FormSubmissionStateEnum, String?)> status;
+  late (FormSubmissionStateEnum, String?) _status;
+  (FormSubmissionStateEnum, String?) get status => _status;
+
   LoginFormController(this._auth) {
-    status = ValueNotifier<(FormSubmissionStateEnum, String?)>(
-        (FormSubmissionStateEnum.initial, null));
+    _status = (FormSubmissionStateEnum.initial, null);
     formControl =
         FormControl.initiate<LoginFormField>(LoginFormField.values.length);
   }
   late FormControl<LoginFormField> formControl;
   void onEmailChanged(String email) {
     formControl.validate(
-        isValid: email.isNotEmpty,
+        isValid: InputValidator.email(email),
         content: email,
         errorMessage: 'Email not valid',
         currentFormFieldInUse: LoginFormField.emailOrUserName);
   }
 
   Future<void> submit() async {
-    status.value = (FormSubmissionStateEnum.inProgress, null);
+    _status = (FormSubmissionStateEnum.inProgress, null);
+    notifyListeners();
     final login = Login(
         email: formControl.getContent<String>(LoginFormField.emailOrUserName),
         password: formControl.getContent<String>(LoginFormField.password));
-
-    final result = await _auth.signIn(login);
+    Future.delayed(Duration(seconds: 3));
+    final result = Result(isSuccessful: true, errorMessage: null);
+    //final result = await _auth.signIn(login);
     if (result.isSuccessful) {
-      status.value = (FormSubmissionStateEnum.successful, null);
+      _status = (FormSubmissionStateEnum.successful, null);
+      notifyListeners();
       return;
     }
-    status.value = (FormSubmissionStateEnum.serverFailure, result.errorMessage);
+    notifyListeners();
+    _status = (FormSubmissionStateEnum.serverFailure, result.errorMessage);
   }
 
-  void onPasswordChanged(String password) {
+  void onPasswordChanged(
+      {required String password, required String errorMessage}) {
     formControl.validate(
-        isValid: password.isNotEmpty,
+        isValid: InputValidator.password(password),
         content: password,
-        errorMessage: 'Password not valid',
+        errorMessage: errorMessage,
         currentFormFieldInUse: LoginFormField.password);
   }
 

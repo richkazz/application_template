@@ -157,3 +157,48 @@ class AppNotify extends ValueNotifier<(NotifyType, String?, VoidCallback?)> {
     }
   }
 }
+
+class LoadingContent extends StatelessWidget {
+  const LoadingContent({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ValueListenableBuilder<(NotifyType, String?, VoidCallback?)>(
+      valueListenable: AppNotify.loadingValueNotify,
+      builder: (BuildContext context,
+          (NotifyType, String?, VoidCallback?) value, Widget? child) {
+        return Container(
+          height: value.$1.isNone ? 0 : MediaQuery.sizeOf(context).height,
+          width: value.$1.isNone ? 0 : MediaQuery.sizeOf(context).width,
+          color: AppColors.black.withOpacity(0.1),
+          child: value.$1.isError
+              ? Text(value.$2 ?? 'error')
+              : value.$1.isSuccessful
+                  ? Text(value.$2 ?? 'success')
+                  : Container(
+                      color: const Color.fromRGBO(0, 0, 0, 0.6),
+                      height: MediaQuery.of(context).size.height,
+                      child: const Center(
+                        child: ColoredBox(
+                          color: Colors.transparent,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              SizedBox(
+                                width: 40,
+                                height: 40,
+                                child: CircularProgressIndicator(
+                                  color: Colors.purple,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+        );
+      },
+    );
+  }
+}

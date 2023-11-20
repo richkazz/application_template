@@ -31,11 +31,16 @@ class AppView extends StatelessWidget {
       darkTheme: const AppDarkTheme().themeData,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      home: AuthenticatedUserListener(
-        child: FlowBuilder<AppStatus>(
-          state: context.select((AppBloc bloc) => bloc.state.status),
-          onGeneratePages: onGenerateAppViewPages,
-        ),
+      home: Stack(
+        children: [
+          AuthenticatedUserListener(
+            child: FlowBuilder<AppStatus>(
+              state: context.select((AppBloc bloc) => bloc.state.status),
+              onGeneratePages: onGenerateAppViewPages,
+            ),
+          ),
+          const LoadingContent(),
+        ],
       ),
     );
   }

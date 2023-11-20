@@ -4,5 +4,11 @@
     "description": "The name of this application",
     "type": "text",
     "placeholders": {}
+  },
+  "passwordErrorText": "Your password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one number.",
+  "@passwordErrorText": {
+    "description": "Error text for invalid password",
+    "type": "text",
+    "placeholders": {}
   }
 }

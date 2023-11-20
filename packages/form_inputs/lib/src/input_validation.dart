@@ -5,13 +5,8 @@ import 'package:fzregex/utils/pattern.dart';
 /// A class for validating inputs
 class InputValidator {
   ///Email validation method
-  static String? emailValidator(String? str) {
-    final ema = str!.toLowerCase().trim();
-    if (Fzregex.hasMatch(ema, FzPattern.email) == false) {
-      return 'Enter a valid email address';
-    } else {
-      return null;
-    }
+  static bool email(String? str) {
+    return Fzregex.hasMatch(str ?? '', FzPattern.email);
   }
 
   /// A method to validate name like input
@@ -27,13 +22,8 @@ class InputValidator {
   }
 
   ///A method to validate password
-  static String? passwordValidator(String? str) {
-    if (Fzregex.hasMatch(str!, FzPattern.passwordNormal1) == false) {
-      // ignore: lines_longer_than_80_chars
-      return 'Your password must be at least\n 8 characters long and contain at least\n one uppercase letter,\none lowercase letter, and one number.';
-    } else {
-      return null;
-    }
+  static bool password(String? str) {
+    return Fzregex.hasMatch(str ?? '', FzPattern.passwordNormal1);
   }
 
   /// A method to validate confirm password by
